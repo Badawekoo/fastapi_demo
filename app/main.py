@@ -1,3 +1,4 @@
+import os
 from typing import Union
 import databases
 from fastapi import FastAPI
