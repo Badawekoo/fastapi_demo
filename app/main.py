@@ -34,6 +34,12 @@ async def shutdown():
 async def read_root():
     return {"message": "Connected to Postgres!"}
 
+@app.get("/get-time")
+async def get_time():
+    query = "SELECT NOW()"
+    rows = await database.fetch_all(query=query)
+    return {"Time now is": rows}
+
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
